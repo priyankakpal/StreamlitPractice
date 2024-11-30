@@ -23,7 +23,7 @@ seats = col2.selectbox("Enter the number of seats",[4,5,7,9,11])
 encode_dict = {
     "fuel_type": {'Diesel': 1, 'Petrol': 2, 'CNG': 3, 'LPG': 4, 'Electric': 5},
     "seller_type": {'Dealer': 1, 'Individual': 2, 'Trustmark Dealer': 3},
-    "transmission_type": {'Manual': 1, 'Automatic': 2}
+    "transmission_type": {'Manually': 1, 'Automatic': 2}
 }
 
 if st.button("Get Price"):
@@ -31,6 +31,6 @@ if st.button("Get Price"):
     encoded_transmission_type = encode_dict['transmission_type'][transmission_type]
 
     # call the model.predict() function
-    input_data = [2012,2,120000,encoded_fuel_type,encoded_transmission_type,19,engine,46,seats]
+    input_data = [2012.0,2,120000,encoded_fuel_type,encoded_transmission_type,19.7,engine,46.3,seats]
     pred = model.predict([input_data])[0]
     st.header(round(pred, 2))
